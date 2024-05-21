@@ -16,15 +16,20 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 
 ## How to install and run the project
 
-1. Create a folder in Arduino Directory, download the project and placed it inside the created folder,  <br /><br />
-![alt text]()
+1. Download the zip file and extract it to Arduino directory,  <br /><br />
+![alt text](/Images_for_readme/download_zip.PNG)
 <br /><br /><br /><br />
 2. Run api.js file in the directory, NodeJS must be installed in your PC <br /><br />
-  - For users with an IDE, navigate to the directory and enter node api.js
-  - For Window users, navigate to the directory and select the file path and type cmd. new terminal window will be opened in the folder directory, enter node api.js
-  - For Mac and Linux users, navigate to the directory and enter node api.js
-<br /><br /><br /><br />
-3. Open FOMO_object_detect_stream.ino and enter WIFI SSID, PASSWORD, and the IPV4 address from the terminal<br /><br />
+  - For users with an IDE, linux, or Mac navigate to the directory and enter "npm install" follow by "node api.js"
+  ![alt text](/Images_for_readme/ide_run_api.PNG)
+  <br /><br />
+- For Window users, navigate to the directory then select the file path and type cmd. new terminal window will be opened in the folder directory. <br /><br />
+ ![alt text](/Images_for_readme/window_run_api1.PNG)
+ ![alt text](/Images_for_readme/window_run_api2.PNG)
+- Enter "npm install" follow by "node api.js" <br />
+ ![alt text](/Images_for_readme/window_run_api3.PNG)
+  <br /><br /> <br /><br />
+3. Open FOMO_object_detect_stream.ino and enter WIFI SSID, PASSWORD, and the IPV4 address from the terminal <br /><br />
   - For Window users, opem cmd and enter ipconfig.
   - For Linux users, open terminal and enter hostname -I
 ![alt text]()
