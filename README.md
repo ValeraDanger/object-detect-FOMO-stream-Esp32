@@ -11,7 +11,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 1. FOMO_object_detect_stream.ino - Containes Arduino codes for streaming camera images to the webserver and posting inference results to NodeJS.
 2. index.html - Contains HTML elements for streaming and inferencing.
 3. index.js - Javascript functions for HTML element for streaming and inferencing.
-4. api.js - NodeJS access point for processing inference results for index.js
+4. api.js - NodeJS access point for processing inference results for index.js.
 5. styles.css - makes webserver looks more lively.
 
 ## How to install and run the project
@@ -20,13 +20,13 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 ![alt text](/Images_for_readme/download_zip.PNG)
 <br /><br /><br /><br />
 2. Run api.js file in the directory, NodeJS must be installed in your PC <br /><br />
-  - For users with an IDE, linux, or Mac navigate to the directory and enter "npm install" follow by "node api.js"
+  - For users with an IDE, linux, or Mac navigate to the directory and enter "npm install" follow by "node api.js". <br /><br />
   ![alt text](/Images_for_readme/ide_run_api.PNG)
-  <br /><br />
-- For Window users, navigate to the directory then select the file path and type cmd. new terminal window will be opened in the folder directory. <br /><br />
+  <br /><br /><br />
+- For Window users, navigate to the directory then select the file path and type cmd. New terminal window will be opened in the folder directory. <br /><br />
  ![alt text](/Images_for_readme/window_run_api1.PNG)
  ![alt text](/Images_for_readme/window_run_api2.PNG)
-- Enter "npm install" follow by "node api.js" <br />
+- Enter "npm install" follow by "node api.js" <br /><br />
  ![alt text](/Images_for_readme/window_run_api3.PNG)
   <br /><br /> <br /><br />
 3. Open FOMO_object_detect_stream.ino and enter WIFI SSID, PASSWORD, and the IPV4 address from the terminal <br /><br />
