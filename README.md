@@ -30,9 +30,12 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
  ![alt text](/Images_for_readme/window_run_api3.PNG)
   <br /><br /> <br /><br />
 3. Open FOMO_object_detect_stream.ino and enter WIFI SSID, PASSWORD, and the IPV4 address from the terminal <br /><br />
-  - For Window users, opem cmd and enter ipconfig.
-  - For Linux users, open terminal and enter hostname -I
-![alt text]()
+![alt text](/Images_for_readme/wifi_ipv4.PNG)
+<br /><br /><br />
+  - To find IPV4 For Window users, open cmd and enter "ipconfig". <br /><br />
+    ![alt text](/Images_for_readme/cmd_ipv4.PNG) <br /><br />
+  - To find IPV4 For Linux users, open terminal and enter hostname -I <br /><br />
+    ![alt text](Images_for_readme/terminal_ipv4.PNG) <br /><br />
 <br /><br /><br /><br />
 4. Add zip folder of selected Model to your Arduino IDE <br /><br />
 ![alt text]()
