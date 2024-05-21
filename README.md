@@ -38,9 +38,9 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
     ![alt text](Images_for_readme/terminal_ipv4.PNG) <br /><br />
 <br /><br /><br /><br />
 4. Add zip folder of selected Model to your Arduino IDE <br /><br />
-![alt text]()
+![alt text](Images_for_readme/arduino_model_zip.PNG)
 <br /><br />
-![alt text]()
+![alt text](Images_for_readme/FOMO_model_zip.PNG)
 <br /><br /><br /><br />
 5. Under tools change your Board to "ESP32S3 Dev Module" and PSRAM to "OPI PSRAM".<br /><br />
 ![alt text](/Images_for_readme/IDE_configure.PNG)
