@@ -3,8 +3,8 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 
 ## What you'll need
 - [Arduino IDE](https://www.arduino.cc/en/software), preferably the latest ones, but older versions will still do the job.
-- [CORS](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) web extensions for your targeted browser.
-- [NodeJS](https://nodejs.org/en/download/package-manager/current) for processing inference result and api Points
+- [CORS](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) web extensions for your targeted browser so that streaming request is not denied.
+- [NodeJS](https://nodejs.org/en/download/package-manager/current) provide access points for inference results
 
 ## Project files descriptions
 
@@ -13,3 +13,40 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 3. index.js - Javascript functions for HTML element for streaming and inferencing.
 4. api.js - NodeJS access point for processing inference results for index.js
 5. styles.css - makes webserver looks more lively.
+
+## How to install and run the project
+
+1. Create a folder in Arduino Directory, download the project and placed it inside the created folder,  <br /><br />
+![alt text]()
+<br /><br /><br /><br />
+2. Run api.js file in the directory, NodeJS must be installed in your PC <br /><br />
+  - For users with an IDE, navigate to the directory and enter node api.js
+  - For Window users, navigate to the directory and select the file path and type cmd. new terminal window will be opened in the folder directory, enter node api.js
+  - For Mac and Linux users, navigate to the directory and enter node api.js
+<br /><br /><br /><br />
+3. Open FOMO_object_detect_stream.ino and enter WIFI SSID, PASSWORD, and the IPV4 address from the terminal<br /><br />
+  - For Window users, opem cmd and enter ipconfig.
+  - For Linux users, open terminal and enter hostname -I
+![alt text]()
+<br /><br /><br /><br />
+4. Add zip folder of selected Model to your Arduino IDE <br /><br />
+![alt text]()
+<br /><br />
+![alt text]()
+<br /><br /><br /><br />
+5. Under tools change your Board to "ESP32S3 Dev Module" and PSRAM to "OPI PSRAM".<br /><br />
+![alt text](/Images_for_readme/IDE_configure.PNG)
+<br /><br /><br /><br />
+6. Upload the code to your ESP32S3. This process may take up to 20 to 30 minutes, once completed copy the IP address from the serial monitor to use it for process 9 <br /><br />
+![alt text](/Images_for_readme/ip_IDE.PNG)
+<br /><br /><br /><br />
+7. Enable CORS extension in your default browser <br /><br />
+![alt text](/Images_for_readme/CORS.PNG)
+<br /><br /><br /><br />
+8. Open index.html, it should open the default browser and ask for IP Address, paste the Ip address obtain from Arduino IDE in process 7.  <br /><br />
+![alt text](/Images_for_readme/CORS.PNG)
+<br /><br /><br /><br />
+9. Done!! the inference results from Esp32 should be shown in the webserver  
+![alt text](/Images_for_readme/done.PNG)<br /><br />
+<br /><br /><br /><br />
+
