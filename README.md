@@ -19,7 +19,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 1.  <strong> Download the zip file and extract it to Arduino directory </strong> <br /><br />
 ![alt text](/Images_for_readme/download_zip.PNG)
 <br /><br /><br /><br />
-2.  <strong> Run api.js file in the directory, NodeJS must be installed in your PC  </strong><br /><br />
+2.  <strong> Run api.js file, NodeJS is required for this process. </strong><br /><br />
   - For users with an IDE, linux, or Mac navigate to the directory and enter "npm install" follow by "node api.js". <br /><br />
   ![alt text](/Images_for_readme/ide_run_api.PNG)
   <br /><br /><br />
@@ -37,7 +37,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
   - To find IPV4 For Linux users, open terminal and enter hostname -I <br /><br />
     ![alt text](Images_for_readme/terminal_ipv4.PNG) <br /><br />
 <br /><br /><br /><br />
-4. <strong> Add zip folder of selected Model to your Arduino IDE. </strong> <br /><br />
+4. <strong> Add zip folder of the model obtained from Edge Impulse to Arduino IDE. </strong> <br /><br />
 ![alt text](Images_for_readme/arduino_model_zip.PNG)
 <br /><br />
 ![alt text](Images_for_readme/FOMO_model_zip.PNG)
@@ -51,7 +51,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 7. <strong> Enable CORS extension in your default browser. </strong> <br /><br />
 ![alt text](/Images_for_readme/CORS.PNG)
 <br /><br /><br /><br />
-8. <strong> Open index.html, it should open the default browser and ask for IP Address, paste the Ip address obtain from Arduino IDE in process 7. </strong> <br /><br />
+8. <strong> Go to directory and open index.html, it should open the default browser and ask for IP Addres. Paste the Ip address obtain from Arduino IDE in process 7. </strong> <br /><br />
 ![alt text](/Images_for_readme/ip_prompt.PNG)
 <br /><br /><br /><br />
 9. <strong> Done!! the inference results from Esp32 should be shown in the webserver. </strong>  
