@@ -16,7 +16,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 
 ## How to install and run the project
 
-1. Download the zip file and extract it to Arduino directory,  <br /><br />
+1.  <strong> Download the zip file and extract it to Arduino directory <strong/> <br /><br />
 ![alt text](/Images_for_readme/download_zip.PNG)
 <br /><br /><br /><br />
 2. Run api.js file in the directory, NodeJS must be installed in your PC <br /><br />
