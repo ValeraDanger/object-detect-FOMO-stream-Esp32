@@ -1,0 +1,245 @@
+.navigation-bar{
+    display: flex;
+    width: 98vw;
+    padding: 10px;
+    position: relative;
+    height: 30px;
+}
+
+.setting-container{
+    display:column;
+}
+
+.setting-icon{
+    width: 35px;
+    height: 35px;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.setting-icon:hover{
+    width: 40px;
+    height: 40px;
+}
+
+.setting-label {
+    color: bisque;
+    padding: 20px;
+    padding-bottom: 30px;
+    cursor: pointer;
+}
+
+.setting:hover{
+    font-size: larger;
+}
+.setting-contents{
+    display: grid;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px;
+    width: 180px;
+    background-color: #469a6b;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.language-container{
+    margin-left: 1400px;
+    display:flex;
+    justify-content: center;
+}
+
+.stream_container {
+    padding: 15px;
+}
+
+.english{
+    color: bisque;
+    font: 15px;
+    cursor: pointer;
+    margin-left: 90%;
+}
+
+.thai{
+    color: bisque;
+    font: 15px;
+    cursor: pointer;
+}
+
+.loading {
+    display: block;
+    margin: auto;
+    pointer-events: none;
+}
+
+.stream {
+    display: block;
+    visibility: hidden;
+    -webkit-user-select: none;
+    margin: auto;
+    border-radius: 6px;
+    margin-bottom: -10%;
+}
+
+.canvasImg {
+    display: block;
+    margin: auto;
+    margin-top: -10%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.resolution {
+    border: none;
+    color: bisque;
+    margin-left: 46.7%;
+    border-radius: 6px;
+    background-color: #40946f;
+    padding: 3px;
+}
+
+.console-container {
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 370px;
+    margin: auto;
+    background-color: #259765;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 140px;
+    border-color: black;
+}
+
+.row {
+    display:flex;
+    justify-content: center;
+    padding:10px;
+}
+.stop {
+    margin-left: 3%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.stop:hover{
+    height: 68px;
+    width: 68px;
+}
+
+.capture{
+    margin-left: 1%;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.capture:hover{
+    height: 75px;
+    width: 75px;
+}
+
+.instance_label {
+    color: bisque;
+    padding: 5px;
+    font-size: 18px
+}
+
+.instance {
+    width: 50px;
+    border:none;
+    height: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.basic-setting-label{
+    color: bisque;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.basic-setting-input{
+    width: 48px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    padding-right: 15px;
+}
+
+.advance-setting-label{
+    color: bisque;
+    font-size: 15px;
+    padding: 7px;
+}
+
+.advance-setting-input{
+    width: 100px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.download {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;;
+}
+
+.download:hover{
+    width: 55px;
+    height: 55px;
+}
+
+.image-no{
+    cursor: none;
+    border: none;
+    background-color:transparent;
+    margin-left: -84%;
+    padding-top: 15px;
+    color: bisque;
+    font-size: 15px;
+    width: 40px;
+    height: 30px;
+    pointer-events: none;
+}
+
+.clear {
+    margin-right: 7%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.clear:hover{
+    width: 55px;
+    height: 55px;
+}
+
+.download-delete{
+    padding-left: 10%;
+    height: 45px;
+    display:flex;
+    justify-content: space-between;
+    width: 83vw;
+}
+
+.galleryImg {
+    padding: 25px;
+    background-color: #349489;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 6px;
+    border-width: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1750px;
+}
+
+.savedImg {
+    display: none
+}
