@@ -3,7 +3,6 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 
 ## What you'll need
 - [Arduino IDE](https://www.arduino.cc/en/software), preferably the latest ones, but older versions will still do the job.
-- [CORS](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) web extensions for your targeted browser so that streaming request is not denied.
 - [NodeJS](https://nodejs.org/en/download/package-manager/current) provide access points for inference results
 
 ## Project files descriptions
@@ -48,10 +47,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 6. <strong> Upload the code to your ESP32S3. This process may take up to 20 to 30 minutes, once completed copy the IP address from the serial monitor to use it for process 9. </strong> <br /><br />
 ![alt text](/Images_for_readme/arduino_serial_monitor.PNG)
 <br /><br /><br /><br />
-7. <strong> Enable CORS extension in your default browser. </strong> <br /><br />
-![alt text](/Images_for_readme/CORS.PNG)
-<br /><br /><br /><br />
-8. <strong> Go to directory and open index.html, it should open the default browser and ask for IP Addres. Paste the Ip address obtain from Arduino IDE in process 7. </strong> <br /><br />
+7. <strong> Go to directory and open index.html, it should open the default browser and ask for IP Addres. Paste the Ip address obtain from Arduino IDE in process 7. </strong> <br /><br />
 ![alt text](/Images_for_readme/ip_prompt.PNG)
 <br /><br /><br /><br />
 9. <strong> Done!! the inference results from Esp32 should be shown in the webserver. </strong>  
