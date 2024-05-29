@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Object Detection</title>
+  <title>FOMO Object Detection</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -44,11 +44,6 @@
           <option value="0">0</option>
           <option value="1">1</option>
         </select>
-        <text id="gainLabel" class="basic-setting-label"></text>
-        <select id="gain" class="basic-setting-input">
-          <option value="0">0</option>
-          <option value="1">1</option>
-        </select>
         <text id="awbLabel" class="basic-setting-label"></text>
         <select id="awb" class="basic-setting-input">
           <option value="0">0</option>
@@ -70,8 +65,8 @@
         <text id="agcLabel" class="basic-setting-label"></text>
         <select id="agc" class="basic-setting-input">
           <option value="0">off</option>
-          <option value="5">lowest</option>
-          <option value="10">low</option>
+          <option value="1">lowest</option>
+          <option value="7">low</option>
           <option value="15">medium</option>
           <option value="20">high</option>
           <option value="25">very high</option>
@@ -110,6 +105,16 @@
           <option value="3">Office</option>
           <option value="4">Home</option>
         </select>
+        <text id="vflipLabel" class="basic-setting-label"></text>
+        <select id="vflip" class="basic-setting-input">
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
+        <text id="hmirrorLabel" class="basic-setting-label"></text>
+        <select id="hmirror" class="basic-setting-input">
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
       </div>
     </div>
     <div class="language-container">
@@ -130,14 +135,19 @@
     </canvas>
     <br />
     <select id="resolution" class="resolution" name="resolutionTxt">
-      <option value="160120">QQVGA 160X120</option>
-      <option value="240240">240X240</option>
-      <option value="320240">QVGA 320X240</option>
-      <option value="640480">VGA 640X480</option>
-      <option value="800600">SVGA 800X600</option>
-      <option value="1024768">XGA 1024X768</option>
-      <option value="12801024">SXGA 1280X1024</option>
-      <option value="16001200">UXGA 1600X1200</option>
+      <option value="0">96X96</option>
+      <option value="1">QQVGA 160X120</option>
+      <option value="2">176X144</option>
+      <option value="3">240X176</option>
+      <option value="4">240X240</option>
+      <option value="5">QVGA 320X240</option>
+      <option value="6">400X296</option>
+      <option value="7">480X320</option>
+      <option value="8">VGA 640X480</option>
+      <option value="9">SVGA 800X600</option>
+      <option value="10">XGA 1024X768</option>
+      <option value="11">720p 1280X720</option>
+      <option value="12">SXGA 1280X1024</option>
     </select>
   </div>
   <br/>
@@ -151,11 +161,14 @@
     <div class = "row">
       <text id = "instanceLabel" class="instance_label"></text>
       <input type="number" id="instance" class="instance">
+      <div class = "timer-container">
+        <text id = "seconds" class = "seconds"></text>
+        <text id = "deciSeconds" class = "deciseconds"></text>
+        <text id = "secondLabel" class = "secondLabel"></text>
+      </div>
     </div>
   </div>
-  <br />
-  <br />
-  <br />
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   <div id = "download-delete"  class = "download-delete">
     <img id="download" class="download" src="icons/document_5425860.png">
     <input type="number" id="image_no" class="image-no">
