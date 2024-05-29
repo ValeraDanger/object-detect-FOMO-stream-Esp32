@@ -1,9 +1,7 @@
 .navigation-bar{
     display: flex;
-    width: 98vw;
-    padding: 10px;
-    position: relative;
-    height: 30px;
+    width: 100px;
+    height: 40px;
 }
 
 .setting-container{
@@ -22,13 +20,6 @@
 .setting-icon:hover{
     width: 40px;
     height: 40px;
-}
-
-.setting-label {
-    color: bisque;
-    padding: 20px;
-    padding-bottom: 30px;
-    cursor: pointer;
 }
 
 .setting:hover{
@@ -156,6 +147,15 @@
     padding: 5px;
 }
 
+.timer-container {
+    display: flex;
+    padding: 5px;
+    color: bisque;
+}
+
+.secondLabel {
+    margin-left: 6px;
+}
 .basic-setting-label{
     color: bisque;
     font-size: 15px;
