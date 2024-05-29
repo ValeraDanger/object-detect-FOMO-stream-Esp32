@@ -53,4 +53,25 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 9. <strong> Done!! the inference results from Esp32 should be shown in the webserver. </strong>  
 ![alt text](/Images_for_readme/done.PNG)<br /><br />
 <br /><br /><br /><br />
-
+## Webserver features
+- User can switch languages on the top right corner of the web.<br />
+- Adjustable Camera Settings, try to match camera settings with training datasets, to see more details about each setting please visit [
+https://heyrick.eu/blog/index.php?diary=20210418&keitai=0](https://heyrick.eu/blog/index.php?diary=20210418&keitai=0).<br />
+- User can hide the setting console by clicking on the icon above.<br /><br />
+![alt text](/Images_for_readme/setting.PNG)
+<br /><br /><br />
+- Adjustable Resolutions. <br /><br />
+![alt_text](/Images_for_readme/console.PNG)
+<br /><br /><br />
+- Capture button will start capturing images of detected objects. <br />
+- Set Instances to limit the amount of images captured.  <br />
+- Once capture button is clicked a timer will start to count number of seconds it took to capture all images.<br /> <br />
+![alt_text](/Images_for_readme/console_seconds.PNG)
+<br /><br /> <br />
+- Download button located on the top left will zip all captured images into a single file and download. The downloaded images will not have labels.<br />
+- Clear buttons located on the top right will delete all captured images.<br />
+- User can aslo delete each image individually.<br /><br />
+![alt_text](/Images_for_readme/gallery_img.PNG)
+<br /> <br /><br /> <br />
+## Credit
+Thanks to [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) for providing AIOT board to support this project. Also thanks to [RandomNerdTutorials]([RandomNerdTutorial](https://RandomNerdTutorials.com/esp32-cam-video-streaming-web-server-camera-home-assistant) for providing essential codes for streaming Esp32 camera to webserver. Scripted used for Esp32 FOMO object detection inferencing were from [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices). 
