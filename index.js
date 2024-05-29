@@ -1,45 +1,168 @@
+/////////////// labels and languages ////////////////////
+
+var instanceLabel = document.getElementById("instanceLabel");
+var brightLabel = document.getElementById("brightLabel");
+var contrastLabel = document.getElementById("contrastLabel");
+var saturationLabel = document.getElementById("saturationLabel");
+var whiteBallLabel = document.getElementById("whiteballLabel");
+var awbLabel = document.getElementById("awbLabel");
+var aeLabel = document.getElementById("aeLabel");
+var exposureLabel = document.getElementById("exposureLabel");
+var aec2Label = document.getElementById("aec2Label");
+var gainLabel = document.getElementById("gainLabel");
+var agcLabel = document.getElementById("agcLabel");
+var gainCelingLabel = document.getElementById("gainCelingLabel");
+var rawGmaLabel = document.getElementById("rawGmaLabel");
+var effectLabel = document.getElementById("effectLabel");
+var modeLabel = document.getElementById("modeLabel");
+var vflipLabel = document.getElementById("vflipLabel");
+var hmirrorLabel = document.getElementById("hmirrorLabel");
+var secondLabel = document.getElementById("secondLabel");
+var englishSelect = document.getElementById("englishSelect");
+var thaiSelect = document.getElementById("thaiSelect");
+
+const en =
+{
+  "instances": "Instances",
+  "brightness": "Brightness",
+  "contrast": "Contrast",
+  "saturation": "Saturation",
+  "whiteBall" : "White Ball",
+  "awb" : "Auto Whiteball",
+  "ae_level": "Auto Exposure",
+  "aec2" : "Auto Exposure Control",
+  "agc" : "Auto Gain Control",
+  "gainCeling" : "Gain Ceiling",
+  "rawGma" : "Raw GMA",
+  "effects": "Effect",
+  "mode": "Mode",
+  "vflip" : "Rotate Image",
+  "hmirror" : "Mirror Image",
+  "seconds" : "seconds",
+}
+
+const th =
+{
+  "instances": "จำนวนรูป",
+  "brightness": "ความสว่าง",
+  "contrast": "ความต่างระดับสี",
+  "saturation": "ความอิ่มสี",
+  "whiteBall" : "สมดุลแสงสีขาว",
+  "awb" : "สมดุลแสงสีขาวแบบออโต้",
+  "ae_level": "การเปิดรับแสงแบบออโต้",
+  "aec2" : "การคุมแสงแบบออโต้",
+  "agc" : "ความไวต่อแสงแบบออโต้",
+  "gainCeling" : "ระดับค่าของความไวต่อแสง",
+  "rawGma" : "ความสว่างกล้องแบบออโต้",
+  "effects": "เอฟเฟคกล้อง",
+  "mode": "โหมดกล้อง",
+  "vflip" : "หมุนรูป",
+  "hmirror" : "พลิกรูป",
+  "seconds" : "วินาที"
+}
+
+function changeLanguage(lang){
+  instanceLabel.innerHTML = lang.instances;
+  brightLabel.innerHTML = lang.brightness;
+  contrastLabel.innerHTML = lang.contrast;
+  saturationLabel.innerHTML = lang.saturation;
+  whiteBallLabel.innerHTML = lang.whiteBall;
+  awbLabel.innerHTML = lang.awb;
+  aeLabel.innerHTML = lang.ae_level;
+  aec2Label.innerHTML = lang.aec2;
+  agcLabel.innerHTML = lang.agc;
+  gainCelingLabel.innerHTML = lang.gainCeling;
+  rawGmaLabel.innerHTML = lang.rawGma;
+  effectLabel.innerHTML = lang.effects;
+  modeLabel.innerText = lang.mode;
+  vflipLabel.innerHTML = lang.vflip;
+  hmirrorLabel.innerHTML = lang.hmirror;
+  secondLabel.innerHTML = lang.seconds;
+}
+
+englishSelect.addEventListener("click", function () {
+  thaiSelect.style.color = "bisque";
+  englishSelect.style.color = "blue";
+  changeLanguage(en);
+  localStorage.setItem("lang", "en");
+})
+
+thaiSelect.addEventListener("click", function () {
+  thaiSelect.style.color = "blue";
+  englishSelect.style.color = "bisque";
+  changeLanguage(th);
+  localStorage.setItem("lang", "th");
+})
+
+function getLanguage() {
+  var getLang = localStorage.getItem("lang");
+  if (getLang == "en") {
+    englishSelect.click();
+  }
+  else if (getLang = "th") {
+    thaiSelect.click();
+  }
+  else {
+    englishSelect.click();
+  }
+}
+//////////////////////////////////////////
+
+/////////////// console buttons ///////////////////
+var captureButton = document.getElementById("capture");
+var deciSeconds = document.getElementById("deciSeconds");
+var seconds = document.getElementById("seconds");
+var clearButton = document.getElementById("clear");
+var brightness = document.getElementById("brightness");
+var stopButton = document.getElementById("stop");
+var downloadButton = document.getElementById("download");
+var captureState = false;
+var timerState = false;
+var galleryDict = new Map();
+let index = 0;
+let colorArr = ["green", "blue", "red", "black", "orange","purple", "pink", "gray"];
+
+//for hiding and displaying settings  
+var setting = document.getElementById('setting');
+var settings_contents = document.getElementById("setting-contents");
+var arrow = document.getElementById("arrow");
+var settingHide = true;
+var width = 0;
+var height = 0;
+//////////////////////////
+
 var picture = document.getElementById("stream");
 var canvasImg = document.getElementById("canvasImg");
 var loadingIcon = document.getElementById("loading");
-var resMap = new Map();
-var width = 0;
-var height = 0;
-setResMap();
-//initCanvasHtml();
+
 
 async function getInputAddress() {
-  let previoushttpRequest = localStorage.getItem('ipAddress');
+  let previousStreamRequest = localStorage.getItem('streamPath');
   let streamState = localStorage.getItem('streamState');
   if (streamState !== '1') {
     var inputAddress = prompt('ip address from arduino');
-    var convertedHttpReq = "http://" + inputAddress + "/";
-    localStorage.setItem('ipAddress', convertedHttpReq);
-    return convertedHttpReq;
+    var convertedHttpStream = "http://" + inputAddress + "/stream";
+    var convertedHttpSetting = "http://" + inputAddress + "/setting?";
+    localStorage.setItem('streamPath', convertedHttpStream);
+    localStorage.setItem('settingPath', convertedHttpSetting);
+    return convertedHttpStream;
   }
-  return previoushttpRequest;
+  return previousStreamRequest;
 }
 
-async function getBackendAddress(){
-  let previousBackend = localStorage.getItem('backend');
-  let backendState = localStorage.getItem('backendState');
-  if (backendState !== '1'){
-    var backendAddress = prompt('backend address from api.js');
-    var convertedBackReq = "http://" + backendAddress + "/api/getResult";
-    localStorage.setItem('backend', convertedBackReq);
-    return convertedBackReq;
-  }
-  return previousBackend;
-
+async function setBackendAddress() {
+  const localHost = "http://localhost:3000/api/getResult";
+  localStorage.setItem('backend', localHost);
 }
 
 function checkStream(url) {
   showLoadingIcon();
-  picture.src = url;
+  picture.setAttribute("src", url.toString());
+  //picture.src = url;
   return new Promise((resolve) => {
     picture.onload = () => {
       width = picture.clientWidth;
       height = picture.clientHeight;
-      displayPictureRes(width, height);
       setCanvasRes(width, height);
       drawCanvasFrame();
       drawCanvasInference();
@@ -55,19 +178,21 @@ function checkStream(url) {
   );
 }
 
-function checkBackend(url){
-  return new Promise((resolve) =>{
-    fetch(url).then((response)=>{
+async function checkBackend() {
+  const backendReq = localStorage.getItem("backend");
+  return new Promise((resolve) => {
+    fetch(backendReq).then((response) => {
       console.log(response);
       localStorage.setItem('backendState', '1');
       resolve(true);
     }).catch(err => {
       console.log(err);
-      alert("check if the ip address from api.js is valid or if the file is running");
+      alert("check if api.js is running");
       localStorage.setItem('backendState', '0');
       resolve(true);
     })
   });
+
 }
 
 async function fetchStream() {
@@ -83,45 +208,25 @@ async function fetchStream() {
   }
 }
 
-async function fetchBackend(){
-  for(let i = 0; i < 5; i++){
-    const backendAddress = await getBackendAddress();
-    await checkBackend(backendAddress);
+async function fetchBackend() {
+  for (let i = 0; i < 5; i++) {
+    await setBackendAddress();
+    await checkBackend();
     await new Promise(resolve => setTimeout(resolve, 200));
     let backendState = localStorage.getItem('backendState');
-    if(backendState == '1'){
+    if (backendState == '1') {
       break;
     }
-
   }
 }
-fetchStream();
-fetchBackend();
-
-var classLabel = document.getElementById("class");
-var captureButton = document.getElementById("capture");
-var clearButton = document.getElementById("clear");
-var brightness = document.getElementById("brightness");
-var stopButton = document.getElementById("stop");
-var downloadButton = document.getElementById("download");
-var resolution = document.getElementById("resolution");
-resolution.addEventListener("change", changeResolution);
-
-var state = 0;
-var galleryDict = new Map();
-let index = 0;
-let colorArr = ["green", "blue", "red", "black", "orange",
-  "purple", "pink", "gray"];
-
-//for hiding/displaying settings  
-var setting = document.getElementById('setting');
-var settings_contents = document.getElementById("setting-contents");
-var arrow = document.getElementById("arrow");
-var settingHide = true;
-
 
 var inputInstance = document.getElementById('instance');
 inputInstance.value = 30;
+
+////////// camera settings /////////////
+
+var resolution = document.getElementById("resolution");
+resolution.addEventListener("change", changeResolution);
 
 var brightness = document.getElementById("brightness");
 brightness.addEventListener("change", changeBrightness);
@@ -141,13 +246,9 @@ awb.addEventListener("change", changeAwb);
 var ae = document.getElementById("ae");
 ae.addEventListener("change", changeAe);
 
-
 var aec2 = document.getElementById("aec2");
 aec2.addEventListener("change", changeAec2);
 aec2.value = 1;
-
-var gain = document.getElementById("gain");
-gain.addEventListener("change", changeGain);
 
 var agc = document.getElementById("agc");
 agc.addEventListener("change", changeAgc);
@@ -165,18 +266,168 @@ effect.addEventListener("change", changeEffect);
 var mode = document.getElementById("mode");
 mode.addEventListener("change", changeMode);
 
+var vflip = document.getElementById("vflip");
+vflip.addEventListener("change", changeVflip);
 
-resetAllCameraSetting();
-updateImageNo();
+var hmirror = document.getElementById("hmirror");
+hmirror.addEventListener("change", changeHmirror);
+
+async function changeBrightness() {
+  var selectedBrightness = brightness.options[brightness.selectedIndex].value;
+  var params = "bright=" + selectedBrightness
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeContrast() {
+  var selectedContrast = contrast.options[contrast.selectedIndex].value;
+  var params = "contrast=" + selectedContrast;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeSaturation() {
+  var selectedSaturation = saturation.options[saturation.selectedIndex].value;
+  var params = "saturation=" + selectedSaturation;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeWhiteball(){
+  var selectedWhiteball = whiteball.options[whiteball.selectedIndex].value;
+  var params = "whiteball=" + selectedWhiteball;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeAwb(){
+  var selectedAwb = awb.options[awb.selectedIndex].value;
+  var params = "awb=" + selectedAwb;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeAe() {
+  var selectedAe = ae.options[ae.selectedIndex].value;
+  var params = "ae=" + selectedAe;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeAec2(){
+  var selectedAec2 = aec2.options[aec2.selectedIndex].value;
+  var params = "aec2=" + selectedAec2;
+  await changeSettingApi(params);
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeAgc(){
+  var selectedAgc = agc.options[agc.selectedIndex].value;
+  var params = "agc=" + selectedAgc;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeGainCeiling(){
+  var selectedGainCeiling = gainCeling.options[gainCeling.selectedIndex].value;
+  var params = "gainCeiling=" + selectedGainCeiling;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeRawGma(){
+  var selectedRawGma = rawGma.options[rawGma.selectedIndex].value;
+  var params = "rawGma=" + selectedRawGma;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeEffect() {
+  var selectedEffect = effect.options[effect.selectedIndex].value;
+  var params = "effect=" + selectedEffect;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeMode() {
+  var selectedMode = mode.options[mode.selectedIndex].value;
+  var params = "mode=" + selectedMode;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeVflip() {
+  var selectedVflip = vflip.options[vflip.selectedIndex].value;
+  var params = "vflip=" + selectedVflip;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeHmirror() {
+  var selectedHmirror = hmirror.options[hmirror.selectedIndex].value;
+  var params = "hmirror=" + selectedHmirror;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeResolution() {
+  var selectedRes = resolution.options[resolution.selectedIndex].value;
+  var params = "resolution=" + selectedRes;
+  const jsonCameraStatus = await changeSettingApi(params);
+  await updateSettings(jsonCameraStatus);
+}
+
+async function changeSettingApi(params) {
+  await stopStream();
+  let settingAddress = localStorage.getItem('settingPath');
+  const response = await fetch(settingAddress + params);
+  if (response.status == 200){
+    const data = await response.json();
+    console.log(data);
+    return data;
+  }
+}
+
+async function updateSettings(cameraStatus){
+  console.log(cameraStatus);
+  brightness.value = cameraStatus.brightness; //
+  contrast.value = cameraStatus.contrast; //
+  saturation.value = cameraStatus.saturation; //
+  awb.value = cameraStatus.awb;
+  ae.value = cameraStatus.ae_level;
+  aec2.value = cameraStatus.aec2;
+  agc.value = cameraStatus.agc;
+  gainCeling.value = cameraStatus.gainceiling;
+  rawGma.value = cameraStatus.raw_gma;
+  effect.value = cameraStatus.special_effect;
+  mode.value = cameraStatus.wb_mode;
+  vflip.value = cameraStatus.vflip;
+  hmirror.value = cameraStatus.hmirror;
+  resolution.selectedIndex = cameraStatus.framesize;
+  await new Promise(resolve => setTimeout(resolve, 500));
+  await fetchStream();
+}
+
+////////////////////////////////////////////////////////
+
+async function getInitialSettingsAndStream() {
+  getLanguage();
+  const jsonCameraStatus = await changeSettingApi("resolution=4");
+  await updateSettings(jsonCameraStatus);
+  await fetchBackend();
+  updateImageNo();
+}
+
+getInitialSettingsAndStream();
+
 document.getElementById("galleryImg").style.visibility = "hidden";
 document.getElementById('download-delete').style.visibility = 'hidden';
 document.getElementById('stop').style.visibility = 'hidden';
 
-
 async function stopStream() {
   picture.removeAttribute("src");
   canvasImg.style.visibility = "hidden";
-  await new Promise(resolve => setTimeout(resolve, 1000));
 }
 
 async function drawCanvasFrame() {
@@ -190,7 +441,7 @@ async function drawCanvasFrame() {
 
 async function displayCanvas(picIndex) {
   const displayCanvas = document.createElement("canvas");
-  var WidthRatio = Math.ceil((width/height) * 240);
+  var WidthRatio = Math.ceil((width / height) * 240);
   displayCanvas.id = "cap" + picIndex.toString();
   displayCanvas.setAttribute("width", WidthRatio + "px");
   displayCanvas.setAttribute("height", "240px");
@@ -261,12 +512,12 @@ function getInstance() {
   return inputInstance.value;
 }
 
-function decrementInstance(){
+function decrementInstance() {
   var currentInstance = getInstance();
   inputInstance.value = currentInstance - 1;
 }
 
-async function updateImageNo (){
+async function updateImageNo() {
   var imageNo = document.getElementById("image_no");
   imageNo.value = galleryDict.size;
 }
@@ -280,136 +531,14 @@ function deleteButton(pictureId) {
   }
 }
 
-async function chageOtherSettings(setting) {
-  if (setting !== "bright") {
-    brightness.value = 0;
-  }
-  if (setting !== "contrast") {
-    contrast.value = 0;
-  }
-  if (setting !== "saturation") {
-    saturation.value = 0;
-  }
-  if (setting !== "ae") {
-    ae.value = 0;
-  }
-  else if (setting !== "effect") {
-    effect.value = 0;
-  }
-}
 
-function resetAllCameraSetting() {
-  brightness.value = 0;
-  contrast.value = 0;
-  saturation.value = 0;
-  ae.value = 0;
-  effect.value = 0;
-  mode.value = 0;
-}
-
-async function changeBrightness() {
-  var selectedBrightness = brightness.options[brightness.selectedIndex].value;
-  var params = "bright=" + selectedBrightness
-  await ChangeSetting(params);
-  await chageOtherSettings("bright");
-}
-
-async function changeContrast() {
-  var selectedContrast = contrast.options[contrast.selectedIndex].value;
-  var params = "contrast=" + selectedContrast;
-  await ChangeSetting(params);
-  await chageOtherSettings("contrast");
-}
-
-async function changeSaturation() {
-  var selectedSaturation = saturation.options[saturation.selectedIndex].value;
-  var params = "saturation=" + selectedSaturation;
-  await ChangeSetting(params);
-  await chageOtherSettings("saturation");
-}
-
-async function changeWhiteball(){
-  var selectedWhiteball = whiteball.options[whiteball.selectedIndex].value;
-  var params = "whiteball=" + selectedWhiteball;
-  await ChangeSetting(params);
-}
-
-async function changeAwb(){
-  var selectedAwb = awb.options[awb.selectedIndex].value;
-  var params = "awb=" + selectedAwb;
-  await ChangeSetting(params); 
-}
-
-async function changeAe() {
-  var selectedAe = ae.options[ae.selectedIndex].value;
-  var params = "ae=" + selectedAe;
-  await ChangeSetting(params);
-  await chageOtherSettings("ae");
-}
-
-async function changeExposure(){
-  var selectedExposure = exposure.options[exposure.selectedIndex].value;
-  var params = "exposure=" + selectedExposure;
-  await ChangeSetting(params);
-}
-
-async function changeAec2(){
-  var selectedAec2 = aec2.options[aec2.selectedIndex].value;
-  var params = "aec2=" + selectedAec2;
-  await ChangeSetting(params);
-}
-
-async function changeGain(){
-  var selectedGain = gain.options[gain.selectedIndex].value;
-  var params = "gain=" + selectedGain;
-  await ChangeSetting(params);
-}
-
-async function changeAgc(){
-  var selectedAgc = agc.options[agc.selectedIndex].value;
-  var params = "agc=" + selectedAgc;
-  await ChangeSetting(params);
-}
-
-async function changeGainCeiling(){
-  var selectedGainCeiling = gainCeling.options[gainCeling.selectedIndex].value;
-  var params = "gainCeiling=" + selectedGainCeiling;
-  await ChangeSetting(params);
-}
-
-async function changeRawGma(){
-  var selectedRawGma = rawGma.options[rawGma.selectedIndex].value;
-  var params = "rawGma=" + selectedRawGma;
-  await ChangeSetting(params);
-}
-
-async function changeEffect() {
-  var selectedEffect = effect.options[effect.selectedIndex].value;
-  var params = "effect=" + selectedEffect;
-  await ChangeSetting(params);
-  await chageOtherSettings("effect");
-}
-
-async function changeMode() {
-  var selectedMode = mode.options[mode.selectedIndex].value;
-  var params = "mode=" + selectedMode;
-  await ChangeSetting(params);
-}
-
-async function changeResolution() {
-  var selectedRes = resolution.options[resolution.selectedIndex].value;
-  var params = "resolution=" + selectedRes;
-  await ChangeSetting(params);
-  resetAllSetting();
-}
-
-setting.addEventListener("click", function (){
+setting.addEventListener("click", function () {
   console.log(settingHide);
-  if (settingHide == true){
+  if (settingHide == true) {
     settings_contents.style.visibility = "hidden";
     arrow.src = "icons/caret-up.png";
     settingHide = false;
-  }else if (settingHide == false){
+  } else if (settingHide == false) {
     settingHide = true;
     arrow.src = "icons/caret-down.png";
     settings_contents.style.visibility = "visible";
@@ -418,21 +547,27 @@ setting.addEventListener("click", function (){
 
 captureButton.addEventListener("click", async function () {
   console.log("capture was clicked");
-  document.getElementById('capture').style.visibility = 'hidden';
-  document.getElementById('stop').style.visibility = 'visible';
-  state = 1;
+  captureButton.style.visibility = 'hidden';
+  stopButton.style.visibility = 'visible';
+  captureState = true;
+  await startTimer();
   var instance = getInstance();
-  while (instance != 0) {
-    if (state === 0) {
-      break;
-    }
+  while(instance != 0 || !captureState) {
     instance = getInstance();
-    console.log(instance);
     await new Promise(resolve => setTimeout(resolve, 120));
   }
-  state = 0;
-  document.getElementById('capture').style.visibility = 'visible';
-  document.getElementById('stop').style.visibility = 'hidden';
+  await stopTimer();
+  captureState = false;
+  captureButton.style.visibility = 'visible';
+  stopButton.style.visibility = 'hidden';
+})
+
+stopButton.addEventListener("click", async function () {
+  captureButton.style.visibility = 'visible';
+  stopButton.style.visibility = 'hidden';
+  captureState = false;
+  //timerState = false;
+  await stopTimer();
 })
 
 clearButton.addEventListener("click", function () {
@@ -451,27 +586,6 @@ clearButton.addEventListener("click", function () {
   document.getElementById("download-delete").style.visibility = "hidden";
 })
 
-stopButton.addEventListener("click", async function () {
-  document.getElementById('capture').style.visibility = 'visible';
-  document.getElementById('stop').style.visibility = 'hidden';
-  state = 0;
-})
-
-async function ChangeSetting(params) {
-  await stopStream();
-  let previoushttpRequest = localStorage.getItem('ipAddress');
-  fetch(previoushttpRequest + 'setting?' + params)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      //return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      fetchStream();
-    })
-}
 
 downloadButton.addEventListener("click", async function () {
   var downloadLink = document.createElement("a");
@@ -507,7 +621,7 @@ async function getInference() {
 }
 
 async function drawResult(keys, data) {
-  if (keys[0] !== "name") {
+  if (keys[0] !== "noInference") {
     index++;
     const ctx = canvasImg.getContext('2d');
     for (let i = 0; i < keys.length; i++) {
@@ -529,7 +643,7 @@ async function drawResult(keys, data) {
       ctx.stroke();
     }
     var currentInstance = getInstance();
-    if (state === 1 && currentInstance > 0){
+    if (captureState && currentInstance > 0) {
       await displayCanvas(index);
       await savePicture(index);
       decrementInstance();
@@ -557,141 +671,42 @@ async function drawCanvasInference() {
   }
 }
 
-function setResMap() {
-  //resMap for selecting correct resolution index given by pciture width and height
-  resMap.set("160120", 0);
-  resMap.set("240240", 1);
-  resMap.set("320240", 2)
-  resMap.set("640480", 3);
-  resMap.set("800600", 4);
-  resMap.set("1024768", 5);
-  resMap.set("12801024", 6);
-  resMap.set("16001200", 7);
-}
-
-
-function displayPictureRes(picWidth, picHeight) {
-  width = picWidth;
-  height = picHeight;
-  var mapKey = width.toString() + height.toString();
-  resolution.selectedIndex = resMap.get(mapKey);
-}
-
-function showLoadingIcon(){
+function showLoadingIcon() {
   loadingIcon.src = "./loading.gif";
   loadingIcon.setAttribute("width", "120");
   loadingIcon.setAttribute("height", "120");
   loadingIcon.style.visibility = "visible";
 }
 
-function removeLoadingIcon(){
+function removeLoadingIcon() {
   loadingIcon.removeAttribute('src');
   loadingIcon.style.visibility = 'hidden';
 }
 
-function setCanvasRes(picWidth, picHeight){
+function setCanvasRes(picWidth, picHeight) {
   canvasImg.setAttribute("width", picWidth.toString());
   canvasImg.setAttribute("height", picHeight.toString());
 }
 
-var instanceLabel = document.getElementById("instanceLabel");
-var brightLabel = document.getElementById("brightLabel");
-var contrastLabel = document.getElementById("contrastLabel");
-var saturationLabel = document.getElementById("saturationLabel");
-var whiteBallLabel = document.getElementById("whiteballLabel");
-var awbLabel = document.getElementById("awbLabel");
-var aeLabel = document.getElementById("aeLabel");
-var exposureLabel = document.getElementById("exposureLabel");
-var aec2Label = document.getElementById("aec2Label");
-var gainLabel = document.getElementById("gainLabel");
-var agcLabel = document.getElementById("agcLabel");
-var gainCelingLabel = document.getElementById("gainCelingLabel");
-var rawGmaLabel = document.getElementById("rawGmaLabel");
-var effectLabel = document.getElementById("effectLabel");
-var modeLabel = document.getElementById("modeLabel");
-
-const en =
-{
-  "instances": "Instances",
-  "brightness": "Brightness",
-  "contrast": "Contrast",
-  "saturation": "Saturation",
-  "whiteBall" : "White Ball",
-  "awb" : "Auto Whiteball",
-  "ae_level": "Auto Exposure",
-  "aec2" : "Auto Exposure Control",
-  "gain" : "Gain Control",
-  "agc" : "Auto Gain Control",
-  "gainCeling" : "Gain Ceiling",
-  "rawGma" : "Raw GMA",
-  "effects": "Effect",
-  "mode": "Mode"
-}
-
-
-const th =
-{
-  "instances": "จำนวนรูป",
-  "brightness": "ความสว่าง",
-  "contrast": "ความต่างระดับสี",
-  "saturation": "ความอิ่มสี",
-  "whiteBall" : "สมดุลแสงสีขาว",
-  "awb" : "สมดุลแสงสีขาวแบบออโต้",
-  "ae_level": "การเปิดรับแสงแบบออโต้",
-  "aec2" : "การคุมแสงแบบออโต้",
-  "gain" : "ความไวต่อแสง",
-  "agc" : "ความไวต่อแสงแบบออโต้",
-  "gainCeling" : "ระดับค่าของความไวต่อแสง",
-  "rawGma" : "ความสว่างกล้องแบบออโต้",
-  "effects": "เอฟเฟคกล้อง",
-  "mode": "โหมดกล้อง"
-}
-
-function changeLanguage(lang){
-  instanceLabel.innerHTML = lang.instances;
-  brightLabel.innerHTML = lang.brightness;
-  contrastLabel.innerHTML = lang.contrast;
-  saturationLabel.innerHTML = lang.saturation;
-  whiteBallLabel.innerHTML = lang.whiteBall;
-  awbLabel.innerHTML = lang.awb;
-  aeLabel.innerHTML = lang.ae_level;
-  aec2Label.innerHTML = lang.aec2;
-  gainLabel.innerHTML = lang.gain;
-  agcLabel.innerHTML = lang.agc;
-  gainCelingLabel.innerHTML = lang.gainCeling;
-  rawGmaLabel.innerHTML = lang.rawGma;
-  effectLabel.innerHTML = lang.effects;
-  modeLabel.innerText = lang.mode;
-}
-
-var englishSelect = document.getElementById("englishSelect");
-var thaiSelect = document.getElementById("thaiSelect");
-
-function getLanguage(){
-  var getLang = localStorage.getItem("lang");
-  if (getLang == "en"){
-    englishSelect.click();
-  }
-  else if(getLang = "th"){
-    thaiSelect.click();
-  }
-  else{
-    englishSelect.click();
+async function startTimer() {
+  secondLabel.style.visibility = "visible";
+  var deciSecondCounter = 0;
+  var secondCounter = 0;
+  timerState = true;
+  while (timerState) {
+    console.log(timerState);
+    await new Promise(resolve => setTimeout(resolve, 100));
+    deciSecondCounter += 1;
+    deciSeconds.innerHTML = deciSecondCounter;
+    if (deciSecondCounter == 10) {
+      deciSecondCounter = 0;
+      secondCounter++;
+    }
+    seconds.innerHTML = secondCounter + ".";
+    deciSeconds.innerHTML = deciSecondCounter;
   }
 }
 
-englishSelect.addEventListener("click", function () {
-  thaiSelect.style.color = "bisque";
-  englishSelect.style.color = "blue";
-  changeLanguage(en);
-  localStorage.setItem("lang", "en");
-})
-
-thaiSelect.addEventListener("click", function () {
-  thaiSelect.style.color = "blue";
-  englishSelect.style.color = "bisque";
-  changeLanguage(th);
-  localStorage.setItem("lang", "th");
-})
-
-getLanguage();
+async function stopTimer() {
+  timerState = false;
+}
