@@ -58,7 +58,7 @@ This is indended for streaming [FOMO object detection model](https://edge-impuls
 - Adjustable Camera Settings, try to match camera settings with training datasets, to see more details about each setting please visit [
 https://heyrick.eu/blog/index.php?diary=20210418&keitai=0](https://heyrick.eu/blog/index.php?diary=20210418&keitai=0).<br />
 - User can hide the setting console by clicking on the icon above.<br /><br />
-![alt text](/Images_for_readme/setting.PNG)
+![alt text](/Images_for_readme/settings.PNG)
 <br /><br /><br />
 - Adjustable Resolutions. <br /><br />
 ![alt_text](/Images_for_readme/console.PNG)
