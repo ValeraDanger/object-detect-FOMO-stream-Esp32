@@ -1,5 +1,7 @@
 # FOMO-object-detect-stream-Esp32
-This project was intended for streaming [FOMO object detection model](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) by [Edge Impulse](https://edgeimpulse.com/) inference results from Esp32 to webserver. The Hardware that was used were provided by [Wireless Solution Asia](https://wirelesssolution.asia/). To use this script users must obtain a model from Edge Impulse <br/> <br/>
+This project was intended for streaming [FOMO object detection model](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) by [Edge Impulse](https://edgeimpulse.com/) inference results from Esp32 to webserver. The Hardware that was used were provided by [Wireless Solution Asia](https://wirelesssolution.asia/). To use this script users must obtain a model from Edge Impulse </br>
+<strong> I've created repository to provide simple guide to traning your model please visit [train-FOMO-object-detect-esp32](https://github.com/San279/train-FOMO-object-detect-esp32). </strong> <br/>
+<br/> <br/>
 ![alt text](/Images_for_readme/done.PNG)
 <br /><br /><br />
 ## What you'll need
