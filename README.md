@@ -26,7 +26,7 @@ This project was intended for streaming [FOMO object detection model](https://ed
 1.  <strong> Download the zip file and extract it to Arduino directory </strong> <br /><br />
 ![alt text](/Images_for_readme/folder_directory.PNG)
 <br /><br /><br /><br />
-2.  <strong> Go to the instatllation directory and install javascript dependencies. Run the api.js script, NodeJS is required for this process. </strong><br /><br />
+2.  <strong> Go to the installation directory and install javascript dependencies. Run the api.js script, NodeJS is required for this process. </strong><br /><br />
   - For users with an IDE, linux, or Mac navigate to the directory and enter "npm install" follow by "node api.js". <br /><br />
   ![alt text](/Images_for_readme/ide_run_api.PNG)
   <br /><br /><br />
@@ -44,7 +44,8 @@ This project was intended for streaming [FOMO object detection model](https://ed
   - To find IPV4 For Linux users, open terminal and enter hostname -I <br /><br />
     ![alt text](Images_for_readme/terminal_ipv4.PNG) <br /><br />
 <br /><br /><br /><br />
-4. <strong> Add zip folder of the model obtained from Edge Impulse to Arduino IDE. </strong> <br /><br />
+4. <strong> Add zip folder of the model obtained from Edge Impulse to Arduino IDE. </strong>
+<br /><br />
 ![alt text](Images_for_readme/arduino_model_zip.PNG)
 <br /><br />
 ![alt text](Images_for_readme/FOMO_model_zip.PNG)
@@ -52,7 +53,7 @@ This project was intended for streaming [FOMO object detection model](https://ed
 5. <strong> Under tools change your Board to "ESP32S3 Dev Module" and PSRAM to "OPI PSRAM". </strong><br /><br />
 ![alt text](/Images_for_readme/IDE_configure.PNG)
 <br /><br /><br /><br />
-6. <strong> Upload the code to your ESP32S3. This process may take up to 30 minutes, once completed copy the IP address from the serial monitor to use it for process 9. </strong> <br /><br />
+6. <strong> Upload the code to your ESP32S3. This process may take up to 30 minutes, once completed copy the IP address from the serial monitor to use it for the next process. </strong> <br /><br />
 ![alt text](/Images_for_readme/arduino_serial_monitor.PNG)
 <br /><br /><br /><br />
 7. <strong> Go to directory and open index.html, it should open the default browser and ask for IP Addres. Paste the Ip address obtain from Arduino IDE in process 7. </strong> <br /><br />
