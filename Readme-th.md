@@ -6,7 +6,10 @@
  <br/>
  <br/>
  <strong> - ก่อนใช้ไฟล์นี้ต้องมีไฟล์โมเดล [FOMO](https://github.com/San279/train-FOMO-object-detect-esp32) ก่อน</strong> 
-<br/>
+ <br/>
+ <br/>
+ ![alt text](/Images_for_readme/done_th.PNG)<br /><br />
+<br /><br />
 ## สิงที่ต้องมี
  - [AIoT](https://wirelesssolution.asia/) บอร์ด Esp32-S3 หรือ Esp32 ที่มี PSRAM
  - กล้อง OV 2640
@@ -64,7 +67,28 @@
 ![alt text](/Images_for_readme/ip_prompt.PNG)
 <br /><br /><br /><br />
 9. <strong> เสร็จสิ้น </strong>  
-![alt text](/Images_for_readme/done.PNG)<br /><br />
+![alt text](/Images_for_readme/done_th.PNG)<br /><br />
 <br /><br /><br /><br />
+## ฟีเจอร์ของโปรเจ็ต
+- ยูเซอร์สามารถเปลี่ยนภาษา ตรงด้านขวาบนของหน้าเว็ป<br />
+- เปลี่ยนการตั้งค่าต่างๆ ของกล้องได้ ดูเพิ่มเติมได้ที่[
+https://heyrick.eu/blog/index.php?diary=20210418&keitai=0](https://heyrick.eu/blog/index.php?diary=20210418&keitai=0)<br />
+- ยูเซอร์เลือกที่จะแอบการตั้งค่าของกล้องได้ กดตรงปุ่ม icon ด้านบน <br /><br />
+![alt text](/Images_for_readme/settings_th.PNG)
+<br /><br /><br />
+- เปลี่ยนความละเอียดหรือมิติกล้อง. <br /><br />
+![alt_text](/Images_for_readme/console_th.PNG)
+<br /><br /><br />
+- เมื่อกดปุ้มกล้อง เว็บเซิร์ฟเวอร์จะเริ่มการบันทึกรูปที่มีผลของวัตถุที่เราใช้ฝึก AI เท่านั้น <br />
+- เซ็ทจำนวนรูปที่อยากบันทึกต่อครั้ง  <br />
+- Once capture button is clicked a timer will start to count number of seconds it took to capture all images.<br /> <br />
+![alt_text](/Images_for_readme/console_seconds_th.PNG)
+<br /><br /> <br />
+- Dเมื่อกดปุ้ม Download ตรงซ้ายบนของ gallery จะรวมรูปภาพทั้งหมดใว้ในแฟ้มเดียวและดาวโหลดเป็น zip รูปที่ดาวโหลดจะไม่มีผลของ AI วาดใว้<br />
+- ปุ้ม Clear ตรงขวาบนจะลบรูปที่บันทึกใว้ทั้งหมด<br />
+- ยูเซอร์สามารถเลือกลบรูปที่ไม่ต้องการได้ <br /><br />
+![alt_text](/Images_for_readme/gallery_img.PNG)
+<br /> <br /><br /> <br />
+
 ## เครดิต 
 ต้องขอขอบคุณ [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) สำหรับการสนับสนุนโปรเจ็คนี้ และ [RandomNerdTutorials](https://RandomNerdTutorials.com/esp32-cam-video-streaming-web-server-camera-home-assistant) สำหรับโค้ดส่วนสตรีมรูปภาพขึ้นบนเว็ปเซอร์เวอร์ และ [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) สำหรับโค้ดส่วนรันโมเดล FOMO
