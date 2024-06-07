@@ -2,8 +2,7 @@
  [For English version](https://github.com/San279/object-detect-FOMO-stream-Esp32)
  <br/>
  <br/>
- โปรเจ็คนี้ถูกออกแบบมาใช้กับ [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) AI ตรวจจับวัตถุ ในส่วนของการสตรีมผล AI บน AIoT บอร์ด หรือ Esp32Cam ที่มี PSRAM เท่านั้น
- <br/>
+ โปรเจ็คนี้ถูกออกแบบมาใช้กับ [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) AI ตรวจจับวัตถุ ในส่วนของการสตรีมผล AI จาก AIoT บอร์ด หรือ Esp32Cam ขึ้นบนเว็ปเซอร์เวอร์ <br/>
  <br/>
  <strong> - ก่อนใช้ไฟล์นี้ต้องมีไฟล์โมเดล [FOMO](https://github.com/San279/train-FOMO-object-detect-esp32) ก่อน</strong> 
  <br/>
