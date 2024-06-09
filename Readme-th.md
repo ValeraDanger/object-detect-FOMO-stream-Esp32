@@ -44,7 +44,7 @@ npm install
 node api.js
 ```
  ![alt text](/Images_for_readme/cmd_commands.jpg)
-  <br /><br /> <br /><br />
+  <br /><br /> <br /><br /><br />
  <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่ ssid(ชื่ออินเตอร์เน็ต)  รหัส(password) และ ipv4_address </strong> <br /><br />
 ![alt text](/Images_for_readme/wifi_ipv4.PNG)
 <br /><br /><br />
@@ -56,15 +56,15 @@ node api.js
 ![alt text](Images_for_readme/arduino_model_zip.PNG)
 <br /><br />
 ![alt text](Images_for_readme/FOMO_model_zip.PNG)
-<br /><br /><br /><br />
+<br /><br /><br /><br /><br />
 <strong> 5. เปลี่ยนชื่อไฟล์บรรทัดที่ 24 ให้ตรงกับชื่อโปรเจ็คใน Edge Impulse </strong> 
 <br /><br />
 ![alt_text](/Images_for_readme/match_name.PNG)
-<br /><br /><br /><br />
+<br /><br /><br /><br /><br />
 <strong> 6. กดไปที่ tools ตรงตัวเลือกด้านบนและเปลี่ยน Board เป็น "ESP32S3 Dev Module" และเปลี่ยน PSRAM เป็น "OPI PSRAM".  </strong>
 <br /><br />
 ![alt_text](/Images_for_readme/IDE_configure.PNG)
-<br /><br /><br /><br />
+<br /><br /><br /><br /><br />
 <strong> 7. อัพโหลดโค้ดขึ้นบน ESP32-S3 ขั้นตอนนี่อาจจะใช้ 20 - 30 นาที เสร็จแล้วให้คัดลอก ip address</strong>
 <br/> <br/>
 ![alt text](/Images_for_readme/arduino_serial_monitor.PNG)
@@ -72,10 +72,10 @@ node api.js
 <strong> 8. เปิด index.html และนำ ip address ที่คัดลอกมาวางใว้ในกล่องและกด ok</strong>
 <br/> <br/>
 ![alt text](/Images_for_readme/ip_prompt.PNG)
-<br /><br /><br /><br />
+<br /><br /><br /><br /><br />
 9. <strong> เสร็จสิ้น </strong>  
 ![alt text](/Images_for_readme/done_th.PNG)<br /><br />
-<br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br />
 ## ฟีเจอร์ของโปรเจ็ต
 - ยูเซอร์สามารถเปลี่ยนภาษา ตรงด้านขวาบนของหน้าเว็ป<br />
 - เปลี่ยนการตั้งค่าต่างๆ ของกล้องได้ ดูเพิ่มเติมได้ที่[
