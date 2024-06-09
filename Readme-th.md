@@ -86,7 +86,7 @@ https://heyrick.eu/blog/index.php?diary=20210418&keitai=0](https://heyrick.eu/bl
 - เปลี่ยนความละเอียดหรือมิติกล้อง. <br /><br />
 ![alt_text](/Images_for_readme/console_th.PNG)
 <br /><br /><br />
-- เมื่อกดปุ้มกล้อง เว็บเซิร์ฟเวอร์จะเริ่มการบันทึกรูปที่มีผลของวัตถุที่เราใช้ฝึก AI เท่านั้น <br />
+- เมื่อกดปุ้มกล้อง เว็บเซิร์ฟเวอร์จะเริ่มการบันทึกรูปที่มีผลของวัตถุที่เราใช้ฝึก AI <br />
 - เซ็ทจำนวนรูปที่อยากบันทึกต่อครั้ง  <br />
 - Once capture button is clicked a timer will start to count number of seconds it took to capture all images.<br /> <br />
 ![alt_text](/Images_for_readme/console_seconds_th.PNG)
