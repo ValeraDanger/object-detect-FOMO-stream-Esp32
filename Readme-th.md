@@ -45,10 +45,10 @@ node api.js
 ```
  ![alt text](/Images_for_readme/cmd_commands.jpg)
   <br /><br /> <br /><br />
- <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่ SSID(ชื่ออินเตอร์เน็ต)  รหัส(PASSWORD) และ IPV4 address </strong> <br /><br />
+ <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่ ssid(ชื่ออินเตอร์เน็ต)  รหัส(password) และ ipv4_address </strong> <br /><br />
 ![alt text](/Images_for_readme/wifi_ipv4.PNG)
 <br /><br /><br />
-  - เพื่อหา ipv4 ให้ไปที่ cmd หรือ terminal ที่เราเปิดในขั้นตอนที่แล้วและหารหัสของเครื่องเรา <br /><br />
+  - เพื่อหา ipv4_address ให้ไปที่ cmd หรือ terminal ที่เราเปิดในขั้นตอนที่แล้วและหารหัสของเครื่องเรา <br /><br />
     ![alt text](/Images_for_readme/cmd_ipv4.PNG) <br /><br />
 <br /><br /><br /><br />
 <strong> 4. ใน Arduino กดไปที่ sketch และ Add .Zip library หลังจากนั้นให้เลือกไฟล์โมเดล</strong>
