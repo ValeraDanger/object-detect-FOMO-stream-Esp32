@@ -26,11 +26,16 @@
 ![alt_text](/Images_for_readme/folder_directory.PNG)
 <br /><br /><br /><br />
 <strong> 2. ไปที่แฟ้มแล้วลง javascript dependencies เพื่อรันไฟล์ api.js จะต้องมี NodeJS ในขั้นตอนนี้</strong> <br /><br />
-```text
-code();
-address@domain.example
+  - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้ <br /><br />
+  ```text1
+ipconfig
 ```
-  - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้พิมพ์ npm install ตามไปด้วย node api.js บน terminal <br /><br />
+```text1
+npm install
+```
+```text1
+node api.js
+```
   ![alt text](/Images_for_readme/ide_run_api.PNG)
   <br /><br /><br />
 - สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบน จอ terminal ก้จะเปิดขึ้นมา<br /><br />
