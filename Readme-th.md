@@ -38,7 +38,7 @@ node api.js
  ![alt text](/Images_for_readme/window_run_api1.PNG)
  ![alt text](/Images_for_readme/window_run_api2.PNG)
 - พิมพ์ หรือก็อบ command เหล่านี่ไปใว้ที่ terminal และกดปุ้ม enter
-    ```text1
+```text1
 ipconfig
 npm install
 node api.js
