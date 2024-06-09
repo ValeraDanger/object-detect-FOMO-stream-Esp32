@@ -15,17 +15,21 @@
  - [Arduino IDE](https://www.arduino.cc/en/software) อันเก่าหรือใหม่ก้ได้
  - [NodeJS](https://nodejs.org/en/download/package-manager/current) สำหรับการส่งผลของ AI ไปประมวลผล
 ## โครงสร้าง
-1. FOMO_object_detect_stream.ino - โค้ด Arduino สำหรับส่งผลของ AI ไปที่ NodeJS และ stream รูปภาพกล้อง
-2. index.html - โค้ด html สำหรับส่วนหน้าบ้านของเว็ปไซค์
-3. index.js - โค้ด Javascript สำหรับฟังชึ้นต่างๆ ของส่วนหน้าบ้านเว็ปไซค์.
-4. api.js - โค้ด Javascript คำนวนผลของ AI และเป็นตัวเชื่อมเว็ปไซค์กับโค้ด Arduino
-5. styles.css - ทำให้เว็ปไซค์ดูสวยงสาม.
+1. FOMO_object_detect_stream.ino - Arduino สำหรับส่งผลของ AI ไปที่ NodeJS และ stream รูปภาพกล้อง
+2. index.html - html สำหรับส่วนหน้าเว็ปไซค์
+3. index.js - ไฟล์ Javascript สำหรับฟังชึ้นต่างๆ ของหน้าเว็ปไซค์
+4. api.js - ไฟล์ Javascript สำหรับ Acess point ในส่วนของการเชื่อมผล Ai จาก Arduino กับ หน้าเว็ปไซค์ 
+5. styles.css - ทำให้เว็ปไซค์ดูสวยงสาม
 ## วิธีรันโปรเจ็ค
-<strong> 1. ดาวน์โหลดแฟ้มเป็น zip และแตกไฟล์ในแฟ้ม Arduino. </strong>
+<strong> 1. ดาวน์โหลดแฟ้มเป็น zip และแตกไฟล์ในแฟ้ม Arduino บนคอมพิวเตอร์ของเรา </strong>
 <br /><br />
 ![alt_text](/Images_for_readme/folder_directory.PNG)
 <br /><br /><br /><br />
-<strong> 2. ไปที่แฟ้มที่แตกไฟล์แล้วลง javascript dependencies เพื่อรันไฟล์ api.js จะต้องมี NodeJS ในขั้นตอนนี้</strong> <br /><br />
+<strong> 2. ไปที่แฟ้มแล้วลง javascript dependencies เพื่อรันไฟล์ api.js จะต้องมี NodeJS ในขั้นตอนนี้</strong> <br /><br />
+```text
+code();
+address@domain.example
+```
   - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้พิมพ์ npm install ตามไปด้วย node api.js บน terminal <br /><br />
   ![alt text](/Images_for_readme/ide_run_api.PNG)
   <br /><br /><br />
