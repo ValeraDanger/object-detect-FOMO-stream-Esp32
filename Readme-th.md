@@ -29,6 +29,8 @@
   - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้ <br /><br />
   ```text1
 ipconfig
+npm install
+node api.js
 ```
 ```text1
 npm install
