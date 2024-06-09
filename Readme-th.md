@@ -26,27 +26,26 @@
 ![alt_text](/Images_for_readme/folder_directory.PNG)
 <br /><br /><br /><br />
 <strong> 2. ไปที่แฟ้มแล้วลง javascript dependencies เพื่อรันไฟล์ api.js จะต้องมี NodeJS ในขั้นตอนนี้</strong> <br /><br />
-  - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้ <br /><br />
+  - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้ก็อบ command เหล่านี่ไปใว้ใน terminal <br /><br />
   ```text1
 ipconfig
 npm install
 node api.js
 ```
-```text1
-npm install
-```
-```text1
-node api.js
-```
   ![alt text](/Images_for_readme/ide_run_api.PNG)
   <br /><br /><br />
-- สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบน จอ terminal ก้จะเปิดขึ้นมา<br /><br />
+- สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบนไฟล์เราและกด enter จอ terminal ก้จะเปิดขึ้นมา<br /><br />
  ![alt text](/Images_for_readme/window_run_api1.PNG)
  ![alt text](/Images_for_readme/window_run_api2.PNG)
-- พิมพ์ npm install ตามด้วย node api.js บนจอ terminal<br /><br />
+- พิมพ์ หรือก็อบ command เหล่านี่ไปใว้ที่ terminal และกดปุ้ม enter
+    ```text1
+ipconfig
+npm install
+node api.js
+```
  ![alt text](/Images_for_readme/window_run_api3.PNG)
   <br /><br /> <br /><br />
- <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่(ชื่ออินเตอร์เน็ตที่คอมพิวเตอร์เราต่ออยู่) SSID  รหัส(PASSWORD) และ IPV4 address </strong> <br /><br />
+ <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่ SSID(ชื่ออินเตอร์เน็ต)  รหัส(PASSWORD) และ IPV4 address </strong> <br /><br />
 ![alt text](/Images_for_readme/wifi_ipv4.PNG)
 <br /><br /><br />
   - สำหรับวินโดว์ เปิด cmd แล้วพิมพ์ ipconfig. <br /><br />
