@@ -49,7 +49,7 @@ node api.js
 ![alt text](/Images_for_readme/wifi_ipv4.PNG)
 <br /><br /><br />
   - เพื่อหา ipv4_address ให้ไปที่ cmd หรือ terminal ที่เราเปิดในขั้นตอนที่แล้วและหารหัสของเครื่องเรา <br /><br />
-    ![alt text](/Images_for_readme/cmd_ipv4.jpg) <br /><br />
+    ![alt text](/Images_for_readme/ipv4_addr.jpg) <br /><br />
 <br /><br /><br /><br />
 <strong> 4. ใน Arduino กดไปที่ sketch และ Add .Zip library หลังจากนั้นให้เลือกไฟล์โมเดล</strong>
 <br /><br />
