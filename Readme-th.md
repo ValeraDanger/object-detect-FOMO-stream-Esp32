@@ -36,14 +36,14 @@ node api.js
   <br /><br /><br />
 - สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบนไฟล์ของเราและให้กด enter จอ cmd จะเปิดขึ้น<br /><br />
  ![alt text](/Images_for_readme/window_run_api1.PNG)
- ![alt text](/Images_for_readme/cmd_commands.PNG)
+ ![alt text](/Images_for_readme/window_run_api2.PNG)
 - พิมพ์หรือก็อบ command เหล่านี่ไปใว้ที่ cmd และกดปุ้ม enter
 ```text1
 ipconfig
 npm install
 node api.js
 ```
- ![alt text](/Images_for_readme/window_run_api3.PNG)
+ ![alt text](/Images_for_readme/cmd_commands.jpg)
   <br /><br /> <br /><br />
  <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่ SSID(ชื่ออินเตอร์เน็ต)  รหัส(PASSWORD) และ IPV4 address </strong> <br /><br />
 ![alt text](/Images_for_readme/wifi_ipv4.PNG)
