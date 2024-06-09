@@ -36,7 +36,7 @@ node api.js
   <br /><br /><br />
 - สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบนไฟล์ของเราและให้กด enter จอ cmd จะเปิดขึ้น<br /><br />
  ![alt text](/Images_for_readme/window_run_api1.PNG)
- ![alt text](/Images_for_readme/window_run_api2.PNG)
+ ![alt text](/Images_for_readme/cmd_commands.PNG)
 - พิมพ์หรือก็อบ command เหล่านี่ไปใว้ที่ cmd และกดปุ้ม enter
 ```text1
 ipconfig
