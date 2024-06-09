@@ -28,16 +28,16 @@
 <strong> 2. ไปที่แฟ้มแล้วลง javascript dependencies เพื่อรันไฟล์ api.js จะต้องมี NodeJS ในขั้นตอนนี้</strong> <br /><br />
   - สำหรับ IDE linux หรือ Mac ให้เราเปิด terminal และไปที่ไฟล์ หลังจากนั้นให้ก็อบ command เหล่านี่ไปใว้ใน terminal <br /><br />
   ```text1
-ipconfig
+hostname -I
 npm install
 node api.js
 ```
   ![alt text](/Images_for_readme/ide_run_api.PNG)
   <br /><br /><br />
-- สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบนไฟล์เราและกด enter จอ terminal ก้จะเปิดขึ้นมา<br /><br />
+- สำหรับวินโดว์(windows) ให้ไปที่ไฟล์และพิมพ์ cmd ตรงช่องด้านบนไฟล์ของเราและให้กด enter จอ cmd จะเปิดขึ้น<br /><br />
  ![alt text](/Images_for_readme/window_run_api1.PNG)
  ![alt text](/Images_for_readme/window_run_api2.PNG)
-- พิมพ์ หรือก็อบ command เหล่านี่ไปใว้ที่ terminal และกดปุ้ม enter
+- พิมพ์หรือก็อบ command เหล่านี่ไปใว้ที่ cmd และกดปุ้ม enter
 ```text1
 ipconfig
 npm install
@@ -48,10 +48,8 @@ node api.js
  <strong> 3. เปิดไฟล์ FOMO_object_detect_stream.ino และใส่ SSID(ชื่ออินเตอร์เน็ต)  รหัส(PASSWORD) และ IPV4 address </strong> <br /><br />
 ![alt text](/Images_for_readme/wifi_ipv4.PNG)
 <br /><br /><br />
-  - สำหรับวินโดว์ เปิด cmd แล้วพิมพ์ ipconfig. <br /><br />
+  - เพื่อหา ipv4 ให้ไปที่ cmd หรือ terminal ที่เราเปิดในขั้นตอนที่แล้วและหารหัสของเครื่องเรา <br /><br />
     ![alt text](/Images_for_readme/cmd_ipv4.PNG) <br /><br />
-  - สำหรับ Linux เปิด terminal และพิม hostname -I <br /><br />
-    ![alt text](Images_for_readme/terminal_ipv4.PNG) <br /><br />
 <br /><br /><br /><br />
 <strong> 4. ใน Arduino กดไปที่ sketch และ Add .Zip library หลังจากนั้นให้เลือกไฟล์โมเดล</strong>
 <br /><br />
