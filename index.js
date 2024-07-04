@@ -165,12 +165,12 @@ function checkStream(url) {
       height = picture.clientHeight;
       setCanvasRes(width, height);
       drawCanvasFrame();
-      drawCanvasInference();
+      //drawCanvasInference();
       localStorage.setItem('streamState', '1');
       resolve(true);
     };
     picture.onerror = () => {
-      alert("check if the ip address is valid or if CORS is enabled")
+      alert("check if the ip address is valid")
       localStorage.setItem('streamState', '0');
       resolve(false);
     }
@@ -199,7 +199,7 @@ async function fetchStream() {
   for (let i = 0; i < 5; i++) {
     const inputAddress = await getInputAddress();
     await checkStream(inputAddress).then(console.log);
-    await new Promise(resolve => setTimeout(resolve, 200));
+    await new Promise(resolve => setTimeout(resolve, 120));
     let streamState = localStorage.getItem('streamState');
     if (streamState == '1') {
       removeLoadingIcon();
@@ -412,6 +412,7 @@ async function updateSettings(cameraStatus){
 ////////////////////////////////////////////////////////
 
 async function getInitialSettingsAndStream() {
+  await fetchStream();
   getLanguage();
   const jsonCameraStatus = await changeSettingApi("resolution=4");
   await updateSettings(jsonCameraStatus);
@@ -434,8 +435,9 @@ async function drawCanvasFrame() {
   canvasImg.style.visibility = "visible";
   const ctx = canvasImg.getContext('2d');
   while (true) {
+    drawCanvasInference();
     ctx.drawImage(picture, 0, 0, width, height);
-    await new Promise(resolve => setTimeout(resolve, 120));
+    await new Promise(resolve => setTimeout(resolve, 50));
   }
 };
 
@@ -627,19 +629,28 @@ async function drawResult(keys, data) {
     for (let i = 0; i < keys.length; i++) {
       const confidence = Math.round(data[keys[i]][0]);
       const result = keys[i] + " " + confidence;
-      const x = data[keys[i]][1];
-      const y = data[keys[i]][2];
+      var x = parseFloat(data[keys[i]][1]);
+      var y = parseFloat(data[keys[i]][2]);
+      x = x * (width/96);
+      y = y * (height/96);
+      if (x < (width/2) && width != height){
+        x = x * 1.5;
+      }
+      //console.log("x is " +x);
+      //console.log("y is " + y);
       ctx.font = 'bold 15px Arial';
       ctx.fillStyle = colorArr[i];
-      ctx.fillRect(x * 2.5, (y - 10) * 2.5, result.length + 52, 18);
+      ctx.fillRect(x, (y - 23), result.length + 52, 14);
+      //ctx.fillRect(x, y, 8, 8);
+
       ctx.fillStyle = "white";
-      ctx.fillText(result, x * 2.5, (y - 4) * 2.5);
-      ctx.beginPath();
+      ctx.fillText(result, x, (y - 10));
       //console.log(keys[i]);
       //console.log(data);
+      ctx.beginPath();
       ctx.strokeStyle = colorArr[i];
-      ctx.arc(x * 2.5, y * 2.5, 8, 0, 2 * Math.PI);
-      ctx.lineWidth = 1.5;
+      ctx.arc(x, y, 4, 0, 2 * Math.PI);
+      ctx.lineWidth = 3.5;
       ctx.stroke();
     }
     var currentInstance = getInstance();
@@ -663,12 +674,12 @@ async function getKey(data) {
 }
 
 async function drawCanvasInference() {
-  while (true) {
+  //while (true) 
     const inferences = await getInference();
     var keys = await getKey(inferences);
     await drawResult(keys, inferences);
-    await new Promise(resolve => setTimeout(resolve, 120));
-  }
+    //await new Promise(resolve => setTimeout(resolve, 135));
+  //}
 }
 
 function showLoadingIcon() {
