@@ -21,7 +21,7 @@
  */
 
 /* Includes ---------------------------------------------------------------- */
-#include <pvcColorCubes_inferencing.h>
+#include <Bebra_Inc.-project-1_inferencing.h>
 #include "edge-impulse-sdk/dsp/image/image.hpp"
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -54,9 +54,9 @@
 #define PCLK_GPIO_NUM 13
 
 
-const char *ssid = "San 2.4G";
-const char *password = "0611244569";
-String ipv4_address = "192.168.1.2";
+const char *ssid = "";    // <-- HERE
+const char *password = "";  // <-- HERE
+String ipv4_address = "192.168.0."; // <-- HERE
 String path = "http://" + ipv4_address + ":3000/api/postResult";
 
 #define PART_BOUNDARY "123456789000000000000987654321"
@@ -68,8 +68,8 @@ static const char *_STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %
 httpd_handle_t stream_httpd = NULL;
 
 /* Constant defines -------------------------------------------------------- */
-int EI_CAMERA_RAW_FRAME_BUFFER_COLS = 640;  //96
-int EI_CAMERA_RAW_FRAME_BUFFER_ROWS = 480;  //96
+int EI_CAMERA_RAW_FRAME_BUFFER_COLS = 320;  //96
+int EI_CAMERA_RAW_FRAME_BUFFER_ROWS = 240;  //96
 int EI_CAMERA_FRAME_BYTE_SIZE = 3;
 
 int camera_width[] = { 96, 160, 176, 240, 240, 320, 400, 480, 640, 800, 1024, 1280, 1280 };
@@ -159,7 +159,12 @@ static esp_err_t stream_handler(httpd_req_t *req) {
         jsonBody += ",";
       }
       //ei_printf("    %s (%f) [ x: %u, y: %u, width: %u, height: %u ]\n", bb.label, bb.value, bb.x, bb.y, bb.width, bb.height);
-      jsonBody += "\"" + String(bb.label) + "\":[" + String(bb.value * 100) + "," + String(bb.x) + "," + String(bb.y) + "," + String(bb.width) + "," + String(bb.height) + "]";
+      jsonBody += "\"" + String(bb.label) + "\":[" + 
+                  String(bb.value * 100) + "," + 
+                  String(bb.x * inferXMult) + "," + 
+                  String(bb.y * inferYMult) + "," +
+                  String(bb.width * inferXMult) + "," + 
+                  String(bb.height * inferYMult) + "]";
       //Serial.println(ix);
       //Serial.println(result.bounding_boxes_count);
       //tft.drawCircle(bb.x * 2.5, bb.y * 2.5, 15 , TFT_GREEN);
@@ -173,9 +178,16 @@ static esp_err_t stream_handler(httpd_req_t *req) {
       http.begin(path);
       http.addHeader("Content-type", "application/json");
       int httpCode = http.POST(jsonBody);
+      Serial.println(httpCode);
+      if (httpCode > 0) {
+        Serial.printf("HTTP POST success, code: %d\n", httpCode);
+      } else {
+        Serial.printf("HTTP POST failed, error: %s\n", http.errorToString(httpCode).c_str());
+      }
+      http.end();
     }
     if (!bb_found) {
-      ei_printf("    No objects found\n");
+      //ei_printf("    No objects found\n");
     }
 #else
     for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
