@@ -56,7 +56,7 @@
 
 const char *ssid = "";    // <-- HERE
 const char *password = "";  // <-- HERE
-String ipv4_address = "192.168.0."; // <-- HERE
+String ipv4_address = ""; // <-- HERE
 String path = "http://" + ipv4_address + ":3000/api/postResult";
 
 #define PART_BOUNDARY "123456789000000000000987654321"
@@ -159,7 +159,8 @@ static esp_err_t stream_handler(httpd_req_t *req) {
         jsonBody += ",";
       }
       //ei_printf("    %s (%f) [ x: %u, y: %u, width: %u, height: %u ]\n", bb.label, bb.value, bb.x, bb.y, bb.width, bb.height);
-      jsonBody += "\"" + String(bb.label) + "\":[" + 
+      jsonBody += String("\"local_ip\":") + "\"" + WiFi.localIP().toString() + "\"," +
+                  "\"" + String(bb.label) + "\":[" + 
                   String(bb.value * 100) + "," + 
                   String(bb.x * inferXMult) + "," + 
                   String(bb.y * inferYMult) + "," +
