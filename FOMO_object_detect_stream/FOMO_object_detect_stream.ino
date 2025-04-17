@@ -58,6 +58,7 @@ const char *ssid = "";    // <-- HERE
 const char *password = "";  // <-- HERE
 String ipv4_address = ""; // <-- HERE
 String path = "http://" + ipv4_address + ":3000/api/postResult";
+String addDevice_path = "http://" + ipv4_address + ":3000/api/addDevice";
 
 #define PART_BOUNDARY "123456789000000000000987654321"
 
@@ -263,6 +264,23 @@ void setup() {
   Serial.print(WiFi.localIP());
   Serial.print("/");
   Serial.println();
+
+
+  HTTPClient http;
+  String jsonBody = "{" + String("\"local_ip\":") + "\"" + WiFi.localIP().toString() + "\"}";
+
+  http.begin(addDevice_path);
+  http.addHeader("Content-type", "application/json");
+  int httpCode = http.POST(jsonBody);
+  Serial.println(httpCode);
+  if (httpCode > 0) {
+    Serial.printf("HTTP POST add device success, code: %d\n", httpCode);
+  } else {
+    Serial.printf("HTTP POST add device failed, error: %s\n", http.errorToString(httpCode).c_str());
+  }
+  http.end();
+
+
   if (httpd_start(&stream_httpd, &config) == ESP_OK) {
     httpd_register_uri_handler(stream_httpd, &stream_uri);
     httpd_register_uri_handler(stream_httpd, &setting_uri);
