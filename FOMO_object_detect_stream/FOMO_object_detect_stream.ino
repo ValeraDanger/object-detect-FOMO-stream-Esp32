@@ -36,6 +36,8 @@
 #include "esp_http_server.h"
 #include <string>
 
+#include "credentials.h"
+
 #define PWDN_GPIO_NUM -1
 #define RESET_GPIO_NUM -1
 #define XCLK_GPIO_NUM 15
@@ -54,9 +56,6 @@
 #define PCLK_GPIO_NUM 13
 
 
-const char *ssid = "";    // <-- HERE
-const char *password = "";  // <-- HERE
-String ipv4_address = ""; // <-- HERE
 String path = "http://" + ipv4_address + ":3000/api/postResult";
 String addDevice_path = "http://" + ipv4_address + ":3000/api/addDevice";
 
@@ -149,33 +148,50 @@ static esp_err_t stream_handler(httpd_req_t *req) {
 #if EI_CLASSIFIER_OBJECT_DETECTION == 1
     bool bb_found = result.bounding_boxes[0].value > 0;
     HTTPClient http;
-    //String jsonBody = "{\"test\":\"101\"}";
-    String jsonBody = "{";
+    
+    // Формируем JSON начиная с IP-адреса (только один раз)
+    String jsonBody = "{\"local_ip\":\"" + WiFi.localIP().toString() + "\"";
+    
+    // Проверяем, есть ли определенные люди (person)
+    bool personsFound = false;
+    String personsArray = "";
+    
+    // Сначала соберем всех людей в один массив
     for (size_t ix = 0; ix < result.bounding_boxes_count; ix++) {
       auto bb = result.bounding_boxes[ix];
       if (bb.value == 0) {
         continue;
       }
-      if (ix != 0) {
-        jsonBody += ",";
+      
+      if (String(bb.label) == "person") {
+        if (!personsFound) {
+          personsArray = "[";
+          personsFound = true;
+        } else {
+          personsArray += ",";
+        }
+        
+        // Добавляем данные о человеке в формате массива
+        personsArray += "[" + 
+                        String(bb.value * 100) + "," + 
+                        String(bb.x * inferXMult) + "," + 
+                        String(bb.y * inferYMult) + "," +
+                        String(bb.width * inferXMult) + "," + 
+                        String(bb.height * inferYMult) + "]";
       }
-      //ei_printf("    %s (%f) [ x: %u, y: %u, width: %u, height: %u ]\n", bb.label, bb.value, bb.x, bb.y, bb.width, bb.height);
-      jsonBody += String("\"local_ip\":") + "\"" + WiFi.localIP().toString() + "\"," +
-                  "\"" + String(bb.label) + "\":[" + 
-                  String(bb.value * 100) + "," + 
-                  String(bb.x * inferXMult) + "," + 
-                  String(bb.y * inferYMult) + "," +
-                  String(bb.width * inferXMult) + "," + 
-                  String(bb.height * inferYMult) + "]";
-      //Serial.println(ix);
-      //Serial.println(result.bounding_boxes_count);
-      //tft.drawCircle(bb.x * 2.5, bb.y * 2.5, 15 , TFT_GREEN);
-      //tft.setCursor(bb.x*2.5, bb.y * 2.5);
-      //tft.print(bb.label);
     }
-    if (jsonBody != "{") {
-      String jsonModelProfile = ",\"size\":" + String(model_size) + ",";
-      jsonBody += "}";
+    
+    // Если нашли людей, добавляем их массив в JSON
+    if (personsFound) {
+      personsArray += "]";
+      jsonBody += ",\"person\":" + personsArray;
+    }
+    
+    // Завершаем JSON
+    jsonBody += "}";
+    
+    // Отправляем только если есть какие-то обнаруженные объекты
+    if (jsonBody != "{\"local_ip\":\"" + WiFi.localIP().toString() + "\"}") {
       Serial.println(jsonBody);
       http.begin(path);
       http.addHeader("Content-type", "application/json");
