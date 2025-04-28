@@ -395,24 +395,24 @@ bool camera_setup() {
 
 
 bool camera_setting(String setting, int value) {
-  if (setting == "bright") s->set_brightness(s, value);
+  if (setting == "brightness") s->set_brightness(s, value);
   else if (setting == "contrast") s->set_contrast(s, value);
   else if (setting == "saturation") s->set_saturation(s, value);
-  else if (setting == "effect") s->set_special_effect(s, value);
-  else if (setting == "whiteball") s->set_whitebal(s, value);
-  else if (setting == "awb") s->set_awb_gain(s, value);
-  else if (setting == "mode") s->set_wb_mode(s, value);
+  else if (setting == "special_effect") s->set_special_effect(s, value);
+  else if (setting == "awb") s->set_whitebal(s, value);
+  else if (setting == "awb_gain") s->set_awb_gain(s, value);
+  else if (setting == "wb_mode") s->set_wb_mode(s, value);
   else if (setting == "aec2") s->set_aec2(s, value);
-  else if (setting == "ae") s->set_ae_level(s, value);
-  else if (setting == "aec") s->set_aec_value(s, value);
-  else if (setting == "agc") s->set_agc_gain(s, value);
-  else if (setting == "gainCeiling") s->set_gainceiling(s, (gainceiling_t)value);
+  else if (setting == "ae_level") s->set_ae_level(s, value);
+  else if (setting == "aec_value") s->set_aec_value(s, value);
+  else if (setting == "agc_gain") s->set_agc_gain(s, value);
+  else if (setting == "gain_ceiling") s->set_gainceiling(s, (gainceiling_t)value);
   else if (setting == "bpc") s->set_bpc(s, value);
   else if (setting == "wpc") s->set_wpc(s, value);
-  else if (setting == "rawGma") s->set_raw_gma(s, value);
-  else if (setting == "vflip") s->set_vflip(s, value);
-  else if (setting == "hmirror") s->set_hmirror(s, value);
-  else if (setting == "resolution") {
+  else if (setting == "raw_gma") s->set_raw_gma(s, value);
+  else if (setting == "v_flip") s->set_vflip(s, value);
+  else if (setting == "h_mirror") s->set_hmirror(s, value);
+  else if (setting == "framesize") {
     camera_deinit();
     if (!camera_setup()) {
       return false;
@@ -429,31 +429,24 @@ char *get_camera_status() {
   static char json_response[1024];
   char *p = json_response;
   *p++ = '{';
-  p += sprintf(p, "\"framesize\":%u,", s->status.framesize);
-  p += sprintf(p, "\"quality\":%u,", s->status.quality);
   p += sprintf(p, "\"brightness\":%d,", s->status.brightness);
+  p += sprintf(p, "\"framesize\":%u,", s->status.framesize);
   p += sprintf(p, "\"contrast\":%d,", s->status.contrast);
   p += sprintf(p, "\"saturation\":%d,", s->status.saturation);
-  p += sprintf(p, "\"sharpness\":%d,", s->status.sharpness);
   p += sprintf(p, "\"special_effect\":%u,", s->status.special_effect);
   p += sprintf(p, "\"wb_mode\":%u,", s->status.wb_mode);
   p += sprintf(p, "\"awb\":%u,", s->status.awb);
   p += sprintf(p, "\"awb_gain\":%u,", s->status.awb_gain);
-  p += sprintf(p, "\"aec\":%u,", s->status.aec);
   p += sprintf(p, "\"aec2\":%u,", s->status.aec2);
-  p += sprintf(p, "\"denoise\":%u,", s->status.denoise);
   p += sprintf(p, "\"ae_level\":%d,", s->status.ae_level);
   p += sprintf(p, "\"aec_value\":%u,", s->status.aec_value);
-  p += sprintf(p, "\"agc\":%u,", s->status.agc);
   p += sprintf(p, "\"agc_gain\":%u,", s->status.agc_gain);
-  p += sprintf(p, "\"gainceiling\":%u,", s->status.gainceiling);
+  p += sprintf(p, "\"gain_ceiling\":%u,", s->status.gainceiling);
   p += sprintf(p, "\"bpc\":%u,", s->status.bpc);
   p += sprintf(p, "\"wpc\":%u,", s->status.wpc);
   p += sprintf(p, "\"raw_gma\":%u,", s->status.raw_gma);
-  p += sprintf(p, "\"hmirror\":%u,", s->status.hmirror);
-  p += sprintf(p, "\"vflip\":%u,", s->status.vflip);
-  p += sprintf(p, "\"dcw\":%u,", s->status.dcw);
-  p += sprintf(p, "\"colorbar\":%u", s->status.colorbar);
+  p += sprintf(p, "\"h_mirror\":%u,", s->status.hmirror);
+  p += sprintf(p, "\"v_flip\":%u", s->status.vflip);
   *p++ = '}';
   *p++ = 0;
   return json_response;
